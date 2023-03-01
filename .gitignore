@@ -1,1 +1,4 @@
-bin/
+src/bin/
+/Cargo.toml
+/Cargo.lock
+target/
