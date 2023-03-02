@@ -16,6 +16,17 @@ impl fmt::Display for Greedy {
 
 impl Strategy for Greedy {
     fn compute_next_move(&mut self, state: &Configuration) -> Option<Movement> {
-        unimplemented!("TODO: algo glouton")
+        let mut max_value: i8 = 0;
+        let mut current_value : i8;
+        let mut max_move : Option<Movement> = None;
+        for mov in state.movements() {
+            current_value = state.play(&mov).value();
+            if current_value>max_value {
+                max_value = current_value;
+                max_move = Some(mov)
+            }
+        }
+        return max_move;
     }
+    
 }
