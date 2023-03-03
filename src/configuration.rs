@@ -65,6 +65,14 @@ impl<'a> Configuration<'a> {
         new_configuration
     }
 
+    /// Create a new `Configuration` by playing given `Movement` on self.
+    pub fn play_opponent(&self, movement: &Movement) -> Self {
+        let mut new_configuration = *self;
+        new_configuration.current_player = false;
+        new_configuration.apply_movement(movement);
+        new_configuration
+    }
+
     /// Create a new `Configuration` by skipping turn on self.
     pub fn skip_play(&self) -> Self {
         let mut new_configuration = *self;
@@ -93,6 +101,11 @@ impl<'a> Configuration<'a> {
         } else {
             -(self.blobs[0].len() - self.blobs[1].len()) as i8
         }
+    }
+
+    /// Return the configuration value for opponent (#other_player - #current_player)
+    pub fn value_opponent(&self) -> i8 {
+        -(self.blobs[0].len() - self.blobs[1].len()) as i8
     }
 
     /// Return if given movement is correct for current configuration.

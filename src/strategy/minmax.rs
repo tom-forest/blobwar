@@ -3,6 +3,7 @@ use super::Strategy;
 use crate::configuration::{Configuration, Movement};
 use crate::shmem::AtomicMove;
 use std::fmt;
+use crate::strategy::Greedy;
 
 /// Min-Max algorithm with a given recursion depth.
 pub struct MinMax(pub u8);
@@ -12,16 +13,14 @@ impl Strategy for MinMax {
         let mut min_opponent_value: i8 = 127; //max value
         let mut max_move : Option<Movement> = None;
         let mut current_value : i8;
-        Greedy opponent;
         for mov in state.movements() {
-            Configuration opponent_config = state.play(&mov);
-            Option<Movement> move_opponent = opponent.compute_next_move(opponent_config);
+            let move_opponent = Greedy().compute_next_move(&state.play(&mov));
             if move_opponent == None {
-                return mov //the value of the opponent added is 0 here 
+                return Some(mov); //the value of the opponent added is 0 here 
             }else{
-                current_value = opponent_config.play(move_opponent.unwrap()).value();
+                current_value = state.play_opponent(&(move_opponent.unwrap())).value_opponent();
                 if current_value < min_opponent_value {
-                    max_move = mov;
+                    max_move = Some(mov);
                     min_opponent_value = current_value;
                 }
             }
