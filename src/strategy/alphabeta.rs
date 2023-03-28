@@ -2,6 +2,7 @@
 use std::fmt;
 
 use super::Strategy;
+use crate::strategy::Greedy;
 use crate::configuration::{Configuration, Movement};
 use crate::shmem::AtomicMove;
 
@@ -26,8 +27,19 @@ impl fmt::Display for AlphaBeta {
     }
 }
 
+
+struct Truct<'a>{
+    state: &'a Configuration<'a>,
+    score:i8,
+    movitmovit:Option<Movement>,
+    dep:u8,
+}
+
+
 impl Strategy for AlphaBeta {
     fn compute_next_move(&mut self, state: &Configuration) -> Option<Movement> {
-        unimplemented!("implementer alpha beta")
+        let mut pile: Vec<Truct> = Vec::new();
+        
+        unimplemented!("implementer alpha beta");
     }
 }

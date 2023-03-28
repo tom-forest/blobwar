@@ -10,22 +10,25 @@ pub struct MinMax(pub u8);
 
 impl Strategy for MinMax {
     fn compute_next_move(&mut self, state: &Configuration) -> Option<Movement> {
+        if self.0 <= 0 {
+            return Greedy().compute_next_move(state);
+        }
         let mut min_opponent_value: i8 = 127; //max value
-        let mut max_move : Option<Movement> = None;
+        let mut best_move : Option<Movement> = None;
         let mut current_value : i8;
         for mov in state.movements() {
-            let move_opponent = Greedy().compute_next_move(&state.play(&mov));
+            let move_opponent = MinMax(self.0 - 1).compute_next_move(&state.play(&mov));
             if move_opponent == None {
-                return Some(mov); //the value of the opponent added is 0 here 
+                current_value = state.value_opponent(); //the value of the opponent added is 0 here 
             }else{
                 current_value = state.play_opponent(&(move_opponent.unwrap())).value_opponent();
-                if current_value < min_opponent_value {
-                    max_move = Some(mov);
-                    min_opponent_value = current_value;
-                }
+            }
+            if current_value < min_opponent_value {
+                best_move = Some(mov);
+                min_opponent_value = current_value;
             }
         }
-        return max_move;
+        return best_move;
     }
 }
 
