@@ -8,27 +8,35 @@ use crate::strategy::Greedy;
 /// Min-Max algorithm with a given recursion depth.
 pub struct MinMax(pub u8);
 
+
+fn minaux(state: &Configuration, prof: u8) -> (Option<Movement>, i8) {
+    if prof <= 0 {
+        let final_move = Greedy().compute_next_move(&state);
+        if final_move == None {
+            return (None, -state.value());
+        }
+        let final_config = state.play(&(final_move.unwrap()));
+        return (final_move, final_config.value());
+    }
+    
+    let mut min_opponent_value : i8 = 127;
+    let mut best_move : Option<Movement> = None;
+    let mut current_value : i8;
+    let mut current_move : Option<Movement>;
+    for mov in state.movements() {
+        let (current_move, current_value) = minaux(&state.play(&mov), prof - 1);
+        if current_value < min_opponent_value {
+            min_opponent_value = current_value;
+            best_move = Some(mov);
+        }
+    }
+    return (best_move, -min_opponent_value);
+}
+
+
 impl Strategy for MinMax {
     fn compute_next_move(&mut self, state: &Configuration) -> Option<Movement> {
-        if self.0 <= 0 {
-            return Greedy().compute_next_move(state);
-        }
-        let mut min_opponent_value: i8 = 127; //max value
-        let mut best_move : Option<Movement> = None;
-        let mut current_value : i8;
-        for mov in state.movements() {
-            let move_opponent = MinMax(self.0 - 1).compute_next_move(&state.play(&mov));
-            if move_opponent == None {
-                current_value = state.value_opponent(); //the value of the opponent added is 0 here 
-            }else{
-                current_value = state.play_opponent(&(move_opponent.unwrap())).value_opponent();
-            }
-            if current_value < min_opponent_value {
-                best_move = Some(mov);
-                min_opponent_value = current_value;
-            }
-        }
-        return best_move;
+        return minaux(state, self.0).0;
     }
 }
 

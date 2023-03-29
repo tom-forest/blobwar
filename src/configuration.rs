@@ -105,7 +105,7 @@ impl<'a> Configuration<'a> {
 
     /// Return the configuration value for opponent (#other_player - #current_player)
     pub fn value_opponent(&self) -> i8 {
-        -(self.blobs[0].len() - self.blobs[1].len()) as i8
+        -self.value()
     }
 
     /// Return if given movement is correct for current configuration.
