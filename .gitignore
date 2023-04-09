@@ -2,3 +2,4 @@ src/bin/
 Cargo.toml
 Cargo.lock
 target/
+scriptpython.py
