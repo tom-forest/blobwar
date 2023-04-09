@@ -6,6 +6,9 @@ use serde_derive::{Deserialize, Serialize};
 use std::fmt;
 use std::iter::once;
 use term;
+use std::time::{Duration, Instant};
+use std::ops::Div;
+use std::convert::TryInto;
 
 #[derive(Serialize, Deserialize, Debug, Copy, Clone, PartialEq, Eq)]
 /// Movements : clone some blob or jump
@@ -155,6 +158,57 @@ impl<'a> Configuration<'a> {
                 self.current_player = !self.current_player;
             }
         }
+
+        let value = self.blobs[0].len() - self.blobs[1].len();
+        match value {
+            x if x > 0 => println!("RED ({}) wins over BLUE ({})!", player_one, player_two),
+            x if x < 0 => println!("BLUE ({}) wins over RED ({})!", player_two, player_one),
+            _ => println!("DRAW!"),
+        }
+        println!("{}", self);
+        println!("GAME OVER (red value of {})", value);
+    }
+
+     /// Play a match between the given players starting from current `Configuration` and timing movements.
+     pub fn battle_timed<T: Strategy, U: Strategy>(&mut self, mut player_one: T, mut player_two: U) {
+        // Adding all durations during the game to make an average
+        let mut duration_player1 = Duration::new(0,0);
+        let mut duration_player2 = Duration::new(0,0);
+        let mut start_time : Instant;
+
+        let mut nb_moves_1: i64 = 0;
+        let mut nb_moves_2: i64 = 0; 
+
+        while !self.game_over() {
+            println!(
+                "{} player's turn (he is losing by {} before playing)",
+                ["red", "blue"][self.current_player as usize],
+                self.value()
+            );
+            println!("{}", self);
+            let play_attempt : Option<Movement>;
+            if self.current_player {
+                nb_moves_2+=1;
+                start_time = Instant::now();
+                play_attempt = player_two.compute_next_move(self);
+                duration_player2 += start_time.elapsed();
+            } else {
+                nb_moves_1+=1;
+                start_time = Instant::now();
+                play_attempt = player_one.compute_next_move(self);
+                duration_player1 += start_time.elapsed();
+            };
+            if let Some(ref next_move) = play_attempt {
+                assert!(self.check_move(next_move));
+                self.apply_movement(next_move);
+            } else {
+                self.current_player = !self.current_player;
+            }
+        }
+
+        //Printing time data
+        println!("Average time for player 1 : {:?} with strategy {}", duration_player1.div(nb_moves_1.try_into().unwrap()), player_one);
+        println!("Average time for player 2 : {:?} with strategy {}", duration_player2.div(nb_moves_2.try_into().unwrap()), player_two);
 
         let value = self.blobs[0].len() - self.blobs[1].len();
         match value {
