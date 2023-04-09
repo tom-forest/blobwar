@@ -28,18 +28,36 @@ impl fmt::Display for AlphaBeta {
 }
 
 
-struct Truct<'a>{
-    state: &'a Configuration<'a>,
-    score:i8,
-    movitmovit:Option<Movement>,
-    dep:u8,
+fn alpaux(state: &Configuration, prof: u8, alpha: i8) -> (Option<Movement>, i8) {
+    if prof <= 0 {
+        let final_move = Greedy().compute_next_move(&state);
+        if final_move == None {
+            return (None, -state.value());
+        }
+        let final_config = state.play(&(final_move.unwrap()));
+        return (final_move, final_config.value());
+    }
+    
+    let mut min_opponent_value : i8 = 127;
+    let mut best_move : Option<Movement> = None;
+    let mut current_value : i8;
+    let mut current_move : Option<Movement>;
+    for mov in state.movements() {
+        let (current_move, current_value) = alpaux(&state.play(&mov), prof - 1, -min_opponent_value);
+        if current_value < min_opponent_value {
+            min_opponent_value = current_value;
+            best_move = Some(mov);
+            if min_opponent_value <= alpha {
+                return (best_move, -min_opponent_value);
+            }
+        }
+    }
+    return (best_move, -min_opponent_value);
 }
 
 
 impl Strategy for AlphaBeta {
     fn compute_next_move(&mut self, state: &Configuration) -> Option<Movement> {
-        let mut pile: Vec<Truct> = Vec::new();
-        
-        unimplemented!("implementer alpha beta");
+        return alpaux(state, self.0, -128).0;
     }
 }
