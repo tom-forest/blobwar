@@ -1,0 +1,30 @@
+90131, 54
+69956, 53
+GAME OVER (red value of -10)
+88888, 54
+70581, 53
+GAME OVER (red value of -10)
+94472, 54
+72558, 53
+GAME OVER (red value of -10)
+92833, 54
+75032, 53
+GAME OVER (red value of -10)
+92729, 54
+73262, 53
+GAME OVER (red value of -10)
+85861, 54
+68145, 53
+GAME OVER (red value of -10)
+94240, 54
+74864, 53
+GAME OVER (red value of -10)
+91086, 54
+70867, 53
+GAME OVER (red value of -10)
+91042, 54
+72289, 53
+GAME OVER (red value of -10)
+91579, 54
+72541, 53
+GAME OVER (red value of -10)

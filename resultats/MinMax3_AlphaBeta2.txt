@@ -1,0 +1,6 @@
+4652655, 46
+5416, 45
+GAME OVER (red value of 12)
+4577374, 46
+5461, 45
+GAME OVER (red value of 12)

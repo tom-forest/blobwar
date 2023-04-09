@@ -1,0 +1,30 @@
+71159, 64
+1442309, 64
+GAME OVER (red value of 4)
+69476, 64
+1418371, 64
+GAME OVER (red value of 4)
+69816, 64
+1435490, 64
+GAME OVER (red value of 4)
+71158, 64
+1440478, 64
+GAME OVER (red value of 4)
+68170, 64
+1389565, 64
+GAME OVER (red value of 4)
+69137, 64
+1394753, 64
+GAME OVER (red value of 4)
+70419, 64
+1411520, 64
+GAME OVER (red value of 4)
+69757, 64
+1412040, 64
+GAME OVER (red value of 4)
+67903, 64
+1391641, 64
+GAME OVER (red value of 4)
+71678, 64
+1445954, 64
+GAME OVER (red value of 4)

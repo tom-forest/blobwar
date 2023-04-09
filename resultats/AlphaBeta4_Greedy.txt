@@ -1,0 +1,30 @@
+425449, 11
+10, 10
+GAME OVER (red value of 19)
+392295, 11
+13, 10
+GAME OVER (red value of 19)
+403923, 11
+10, 10
+GAME OVER (red value of 19)
+411434, 11
+10, 10
+GAME OVER (red value of 19)
+429129, 11
+10, 10
+GAME OVER (red value of 19)
+398979, 11
+10, 10
+GAME OVER (red value of 19)
+390086, 11
+9, 10
+GAME OVER (red value of 19)
+364102, 11
+9, 10
+GAME OVER (red value of 19)
+395139, 11
+9, 10
+GAME OVER (red value of 19)
+414608, 11
+12, 10
+GAME OVER (red value of 19)

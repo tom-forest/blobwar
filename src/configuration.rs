@@ -180,12 +180,6 @@ impl<'a> Configuration<'a> {
         let mut nb_moves_2: i64 = 0; 
 
         while !self.game_over() {
-            println!(
-                "{} player's turn (he is losing by {} before playing)",
-                ["red", "blue"][self.current_player as usize],
-                self.value()
-            );
-            println!("{}", self);
             let play_attempt : Option<Movement>;
             if self.current_player {
                 nb_moves_2+=1;
@@ -207,16 +201,15 @@ impl<'a> Configuration<'a> {
         }
 
         //Printing time data
-        println!("Average time for player 1 : {:?} with strategy {}", duration_player1.div(nb_moves_1.try_into().unwrap()), player_one);
-        println!("Average time for player 2 : {:?} with strategy {}", duration_player2.div(nb_moves_2.try_into().unwrap()), player_two);
+        println!("{:?}, {}", duration_player1.div(nb_moves_1.try_into().unwrap()).as_micros(), nb_moves_1);
+        println!("{:?}, {}", duration_player2.div(nb_moves_2.try_into().unwrap()).as_micros(), nb_moves_2);
 
         let value = self.blobs[0].len() - self.blobs[1].len();
-        match value {
+        /*match value {
             x if x > 0 => println!("RED ({}) wins over BLUE ({})!", player_one, player_two),
             x if x < 0 => println!("BLUE ({}) wins over RED ({})!", player_two, player_one),
             _ => println!("DRAW!"),
-        }
-        println!("{}", self);
+        }*/
         println!("GAME OVER (red value of {})", value);
     }
 

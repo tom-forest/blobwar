@@ -1,0 +1,15 @@
+45892, 46
+2846085, 46
+GAME OVER (red value of -2)
+45565, 46
+2784202, 46
+GAME OVER (red value of -2)
+45598, 46
+2802182, 46
+GAME OVER (red value of -2)
+45838, 46
+2819770, 46
+GAME OVER (red value of -2)
+45835, 46
+2801680, 46
+GAME OVER (red value of -2)

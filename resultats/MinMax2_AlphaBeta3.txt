@@ -1,0 +1,30 @@
+48801, 46
+84130, 46
+GAME OVER (red value of -2)
+45637, 46
+78318, 46
+GAME OVER (red value of -2)
+50167, 46
+84618, 46
+GAME OVER (red value of -2)
+47006, 46
+80975, 46
+GAME OVER (red value of -2)
+49913, 46
+86461, 46
+GAME OVER (red value of -2)
+51313, 46
+88868, 46
+GAME OVER (red value of -2)
+49544, 46
+85857, 46
+GAME OVER (red value of -2)
+49437, 46
+84794, 46
+GAME OVER (red value of -2)
+50268, 46
+87000, 46
+GAME OVER (red value of -2)
+50458, 46
+85199, 46
+GAME OVER (red value of -2)

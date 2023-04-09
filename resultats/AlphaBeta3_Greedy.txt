@@ -1,0 +1,30 @@
+68818, 13
+13, 12
+GAME OVER (red value of 19)
+76762, 13
+12, 12
+GAME OVER (red value of 19)
+72026, 13
+9, 12
+GAME OVER (red value of 19)
+76263, 13
+10, 12
+GAME OVER (red value of 19)
+74382, 13
+11, 12
+GAME OVER (red value of 19)
+68084, 13
+10, 12
+GAME OVER (red value of 19)
+68036, 13
+9, 12
+GAME OVER (red value of 19)
+61601, 13
+9, 12
+GAME OVER (red value of 19)
+72564, 13
+10, 12
+GAME OVER (red value of 19)
+69997, 13
+10, 12
+GAME OVER (red value of 19)

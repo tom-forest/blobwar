@@ -1,0 +1,15 @@
+80916, 51
+707260, 50
+GAME OVER (red value of 2)
+81839, 51
+725739, 50
+GAME OVER (red value of 2)
+81859, 51
+732715, 50
+GAME OVER (red value of 2)
+81203, 51
+732867, 50
+GAME OVER (red value of 2)
+85008, 51
+739058, 50
+GAME OVER (red value of 2)

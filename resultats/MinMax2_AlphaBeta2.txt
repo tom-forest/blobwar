@@ -1,0 +1,30 @@
+79256, 54
+7470, 53
+GAME OVER (red value of -10)
+73224, 54
+6889, 53
+GAME OVER (red value of -10)
+72012, 54
+6791, 53
+GAME OVER (red value of -10)
+78056, 54
+7362, 53
+GAME OVER (red value of -10)
+79254, 54
+7353, 53
+GAME OVER (red value of -10)
+80681, 54
+7503, 53
+GAME OVER (red value of -10)
+78228, 54
+7381, 53
+GAME OVER (red value of -10)
+84110, 54
+7881, 53
+GAME OVER (red value of -10)
+83227, 54
+7742, 53
+GAME OVER (red value of -10)
+82942, 54
+7796, 53
+GAME OVER (red value of -10)
